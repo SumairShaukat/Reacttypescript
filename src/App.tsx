@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { Loading } from "./components/Loading";
+import { CharacterInformation } from "./components/CharacterInformation";
+import { fetchCharacter, CharacterType } from "./components/Characters";
+import "./App.css";
 
 function App() {
+  const [character, setCharacter] = React.useState<CharacterType | null>(null);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      fetchCharacter().then((c) => {
+        setCharacter(c);
+        setLoading(false);
+      });
+    });
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {character && <CharacterInformation characters={character} />}
     </div>
   );
 }
