@@ -14,10 +14,11 @@ function App() {
         setCharacter(c);
         setLoading(false);
       });
-    });
+    }, 1000);
   }, []);
   return (
     <div className="App">
+      {loading && <Loading />}
       {character && <CharacterInformation characters={character} />}
     </div>
   );
