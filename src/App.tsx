@@ -2,6 +2,7 @@ import * as React from "react";
 import { Loading } from "./components/Loading";
 import { CharacterInformation } from "./components/CharacterInformation";
 import { fetchCharacter, CharacterType } from "./components/Characters";
+import Todo from "./components/Todo";
 import "./App.css";
 
 function App() {
@@ -17,10 +18,16 @@ function App() {
     }, 1000);
   }, []);
   return (
-    <div className="App">
-      {loading && <Loading />}
-      {character && <CharacterInformation characters={character} />}
-    </div>
+    <>
+      <div className="App">
+        {loading && <Loading />}
+        {character && <CharacterInformation characters={character} />}
+      </div>
+
+      <div>
+        <Todo />
+      </div>
+    </>
   );
 }
 
