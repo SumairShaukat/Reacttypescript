@@ -1,10 +1,13 @@
 import React from "react";
-
-const NameBadge = ({ name }: { name: string }) => {
+type NameBadgeProps = {
+  name: string;
+  greeting?: string;
+};
+const NameBadge = ({ name, greeting }: NameBadgeProps) => {
   return (
     <section className="badge">
       <header className="badge-header">
-        <h1 className="teext-5xl">Hello</h1>
+        <h1 className="teext-5xl">{greeting}</h1>
       </header>
       <div className="badge-body">
         <p className="badge-name">{name}</p>
