@@ -4,6 +4,7 @@ import { CharacterInformation } from "./components/CharacterInformation";
 import { fetchCharacter, CharacterType } from "./components/Characters";
 import Todo from "./components/Todo";
 import "./App.css";
+import NameBadge from "./components/name-badge";
 
 function App() {
   const [character, setCharacter] = React.useState<CharacterType | null>(null);
@@ -19,13 +20,8 @@ function App() {
   }, []);
   return (
     <>
-      <div className="App">
-        {loading && <Loading />}
-        {character && <CharacterInformation characters={character} />}
-      </div>
-
       <div>
-        <Todo />
+        <NameBadge name="sumair" />
       </div>
     </>
   );
